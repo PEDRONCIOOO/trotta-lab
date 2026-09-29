@@ -201,7 +201,7 @@ const testimonials = {
   eyebrow: "O que nossos clientes dizem",
   featured: {
     quote: "As contribuições do time foram decisivas para o sucesso dos nossos projetos. São engenheiros excepcionais, e queremos continuar a parceria e ampliar a colaboração.",
-    name: "Nome do cliente",
+    name: "Gabriel Fernando Santos",
     role: "Head of Platform",
   },
   items: [
