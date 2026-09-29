@@ -1,0 +1,120 @@
+@use "@/ui/styles/mixins" as *;
+
+.grid {
+  display: grid;
+  gap: 24px;
+  @include up($bp-lg) {
+    grid-template-columns: 1.55fr 1fr;
+  }
+}
+
+.big {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 32px 0;
+  overflow: hidden;
+  background: var(--bg-dark);
+  color: var(--text-on-dark);
+
+  h3 {
+    @include display(5, 1.08);
+    max-width: 22rem;
+  }
+  > p {
+    @include paragraph(3);
+    font-weight: 400;
+    color: var(--text-on-dark-muted);
+    max-width: 30rem;
+  }
+  .lists {
+    color: var(--ink-200);
+    @include up($bp-sm) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+.bigArt {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.side {
+  display: grid;
+  gap: 24px;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 20px;
+  padding: 32px 28px;
+
+  h3 {
+    @include heading(4, 1.2);
+  }
+  p {
+    margin-top: 8px;
+    @include paragraph(5);
+    color: var(--text-muted);
+  }
+}
+.icon {
+  display: grid;
+  place-items: center;
+  color: var(--ink-950);
+}
+
+.lists {
+  display: grid;
+  gap: 20px;
+
+  h4 {
+    font-size: var(--p-5);
+    font-weight: var(--weight-button);
+    letter-spacing: 0;
+    margin-bottom: 6px;
+  }
+  li {
+    position: relative;
+    padding-left: 16px;
+    font-size: var(--p-5);
+    line-height: 1.5;
+    margin-bottom: 4px;
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 6px;
+      height: 6px;
+      background: currentColor;
+      rotate: 45deg;
+    }
+  }
+}
+
+.details {
+  margin-top: 14px;
+  font-size: var(--p-6);
+
+  summary {
+    cursor: pointer;
+    list-style: none;
+    font-weight: var(--weight-medium);
+    color: var(--ink-950);
+    &::after {
+      content: " ↓";
+      font-weight: 300;
+    }
+  }
+  &[open] summary::after {
+    content: " ↑";
+  }
+  .lists {
+    margin-top: 12px;
+    gap: 14px;
+    color: var(--ink-700);
+  }
+}

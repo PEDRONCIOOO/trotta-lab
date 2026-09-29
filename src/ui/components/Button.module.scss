@@ -1,0 +1,78 @@
+@use "@/ui/styles/mixins" as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0 24px;
+  font-weight: var(--weight-button);
+  letter-spacing: var(--tracking-button);
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition:
+    background-color var(--duration),
+    color var(--duration),
+    border-color var(--duration);
+  @include cut(12px);
+
+  &:active {
+    transform: translateY(1px);
+  }
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.l {
+  height: 52px;
+  font-size: var(--p-2);
+}
+.m {
+  height: 46px;
+  font-size: var(--p-4);
+}
+.s {
+  height: 40px;
+  font-size: var(--p-5);
+  padding: 0 18px;
+}
+
+.primary {
+  background: var(--accent);
+  color: var(--white);
+  &:hover {
+    background: var(--accent-hover);
+  }
+}
+
+.secondary {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--text);
+  &:hover {
+    background: var(--text);
+    color: var(--white);
+  }
+}
+
+// inversão automática dentro de seções escuras
+:global(.on-dark) .primary {
+  background: var(--white);
+  color: var(--ink-950);
+  &:hover {
+    background: var(--ink-200);
+  }
+}
+:global(.on-dark) .secondary {
+  color: var(--white);
+  border-color: var(--white);
+  &:hover {
+    background: var(--white);
+    color: var(--ink-950);
+  }
+}

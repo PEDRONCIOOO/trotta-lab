@@ -1,0 +1,62 @@
+@use "@/ui/styles/mixins" as *;
+
+.manifesto {
+  display: grid;
+  gap: 32px;
+  @include up($bp-lg) {
+    grid-template-columns: 1.1fr 1fr;
+    gap: 64px;
+  }
+}
+
+.title {
+  @include heading(1, 1.08);
+  letter-spacing: var(--tracking-display);
+  @include up($bp-md) {
+    @include display(4, 1.06);
+  }
+  em {
+    font-style: normal;
+    color: var(--ink-400);
+  }
+}
+
+.body p {
+  @include paragraph(3);
+  color: var(--text-on-dark-muted);
+  margin-bottom: 16px;
+  strong {
+    color: var(--white);
+    font-weight: var(--weight-medium);
+  }
+}
+
+.ways {
+  display: grid;
+  gap: 16px;
+  margin-top: 64px;
+  @include up(56.25rem) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.way {
+  padding: 32px 28px;
+  background: var(--bg-dark-soft);
+  border: 1px solid var(--border-dark);
+
+  h3 {
+    @include heading(3);
+    margin-bottom: 12px;
+  }
+  p {
+    @include paragraph(5);
+    color: var(--text-on-dark-muted);
+  }
+}
+.num {
+  font-family: var(--font-mono);
+  font-size: var(--p-6);
+  color: var(--ink-400);
+  margin-bottom: 20px;
+}

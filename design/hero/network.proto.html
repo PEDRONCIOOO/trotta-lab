@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><title>Trotta — hero network proto</title>
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300..700&display=swap" rel="stylesheet">
+<style>
+:root{--ink-950:#0a0a0a;--ink-900:#161616;--ink-800:#242424;--ink-700:#363636;--ink-600:#4f4f4f;--ink-400:#9a9a9a;--ink-300:#c4c4c4;--ink-200:#e0e0e0;--ink-100:#efefef;--ink-50:#f7f7f7;--ease-lamp:cubic-bezier(.2,.7,.1,1)}
+*{box-sizing:border-box}body{margin:0;font-family:Geologica,system-ui,sans-serif;font-weight:330;background:#0a0a0a;color:#f7f7f7}
+.hero{position:relative;overflow:clip;background-color:#0a0a0a;background-image:radial-gradient(120% 90% at 50% 0,transparent 45%,#000 100%),repeating-linear-gradient(115deg,transparent 0 6px,rgba(255,255,255,.035) 6px 7px),repeating-linear-gradient(-70deg,transparent 0 9px,rgba(255,255,255,.02) 9px 10px)}
+.grid{max-width:1280px;margin:0 auto;padding:64px 32px 40px;display:grid;grid-template-columns:1.2fr 1.3fr;gap:24px;align-items:center}
+.eyebrow{font-size:1.0625rem;font-weight:400;color:#fff}
+h1{margin:16px 0 0;font-size:3.6rem;line-height:1.04;font-weight:620;letter-spacing:-.028em}
+.btn{display:inline-flex;align-items:center;height:52px;padding:0 24px;margin-top:32px;background:#fff;color:#0a0a0a;font-weight:560;font-size:1.25rem;text-decoration:none;border-radius:0 12px 0 12px;corner-shape:bevel}
+.stats{display:flex;gap:48px;margin-top:56px;padding-top:32px;border-top:1px solid #242424}.stat b{display:block;font-size:1.875rem;font-weight:620;letter-spacing:-.028em}.stat span{font-size:.9375rem;color:#9a9a9a}
+.art{position:relative}.art svg{width:100%;height:auto;display:block;overflow:visible}
+
+/* ===== network ===== */
+.tube{fill:none;stroke:#2c2c2c;stroke-width:18;stroke-linecap:round;stroke-linejoin:round}
+.tube-in{fill:none;stroke:#141414;stroke-width:11;stroke-linecap:round;stroke-linejoin:round}
+.tube-hl{fill:none;stroke:rgba(255,255,255,.10);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transform:translateY(-3px)}
+.pulse{fill:none;stroke:#fff;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:16 100;stroke-dashoffset:114;animation:flow 3.2s linear infinite;filter:url(#glow)}
+.pulse.soft{stroke-width:12;opacity:.35;filter:url(#glow2)}
+@keyframes flow{to{stroke-dashoffset:0}}
+.hub-ring{animation:ring 3.2s var(--ease-lamp) infinite}
+@keyframes ring{0%,100%{opacity:.35}12%{opacity:1}40%{opacity:.5}}
+.tile{transition:transform .3s var(--ease-lamp)}
+@media(prefers-reduced-motion:reduce){.pulse,.hub-ring{animation:none}}
+</style></head><body>
+<section class="hero"><div class="grid">
+  <div>
+    <span class="eyebrow">Boutique de Desenvolvimento de Software · Laboratório AI-first</span>
+    <h1>Escale seu time com engenheiros vetados. Transforme ideias em software de verdade.</h1>
+    <a class="btn" href="#">Vamos conversar</a>
+    <div class="stats"><div class="stat"><b>80+</b><span>Engenheiros vetados</span></div><div class="stat"><b>150+</b><span>Empresas atendidas</span></div><div class="stat"><b>14 anos</b><span>Apoiando times de tecnologia</span></div></div>
+  </div>
+  <div class="art" id="art"></div>
+</div></section>
+<script>
+// ---------- geometria ----------
+const W=640,H=480, HUB={x:320,y:190,s:118};
+const TILES=[
+ {id:"time",    x:66, y:64,  icon:'team'},
+ {id:'produto', x:150,y:160, icon:'monitor'},
+ {id:"integra", x:66, y:280, icon:'share'},
+ {id:"cloud",   x:574,y:64,  icon:'cloud'},
+ {id:'auditoria',x:490,y:160,icon:'shield'},
+ {id:"evolucao",x:574,y:280, icon:'history'},
+ {id:"lab",     x:170,y:406, icon:'flask'},
+ {id:'arquit',  x:320,y:410, icon:'network'},
+ {id:"dados",   x:470,y:406, icon:'database'},
+];
+const T=76; // tamanho do tile
+// tubo do hub até o tile: sai por lado/baixo do hub com cotovelos arredondados
+function tubePath(t){
+ const hx=HUB.x, hy=HUB.y, hs=HUB.s/2;
+ const dx=t.x-hx, dy=t.y-hy;
+ if(Math.abs(dx)>Math.abs(dy)){ // sai pelo lado
+  const sx=hx+Math.sign(dx)*hs, sy=hy+Math.max(-30,Math.min(30,dy*0.15));
+  const ex=t.x-Math.sign(dx)*T/2, ey=t.y;
+  const mx=sx+(ex-sx)*0.5;
+  return `M${sx} ${sy} L${mx-Math.sign(dx)*18} ${sy} Q${mx} ${sy} ${mx} ${sy+Math.sign(ey-sy)*18} L${mx} ${ey-Math.sign(ey-sy)*18} Q${mx} ${ey} ${mx+Math.sign(dx)*18} ${ey} L${ex} ${ey}`;
+ } else { // sai por baixo
+  const sx=hx+Math.max(-34,Math.min(34,dx*0.25)), sy=hy+hs;
+  const ex=t.x, ey=t.y-T/2;
+  const my=sy+(ey-sy)*0.5;
+  if(Math.abs(dx)<6) return `M${sx} ${sy} L${ex} ${ey}`;
+  return `M${sx} ${sy} L${sx} ${my-18} Q${sx} ${my} ${sx+Math.sign(dx)*18} ${my} L${ex-Math.sign(dx)*18} ${my} Q${ex} ${my} ${ex} ${my+18} L${ex} ${ey}`;
+ }
+}
+// keycap com chanfro (.cut) — base + tampa
+function keycap(x,y,s,inner,cap='#f2f2f2',base='#2a2a2a'){
+ const c=s*0.18; const p=(cx,cy,ss,cc)=>`M${cx-ss/2+cc} ${cy-ss/2} H${cx+ss/2} V${cy+ss/2-cc} L${cx+ss/2-cc} ${cy+ss/2} H${cx-ss/2} V${cy-ss/2+cc} Z`;
+ return `<g class="tile">
+  <path d="${p(x,y+7,s,c)}" fill="#0f0f0f"/>
+  <path d="${p(x,y+3,s,c)}" fill="${base}"/>
+  <path d="${p(x,y,s,c)}" fill="#3a3a3a"/>
+  <path d="${p(x,y-3,s*0.82,c*0.8)}" fill="${cap}"/>
+  <path d="${p(x,y-3,s*0.82,c*0.8)}" fill="url(#dots)"/>
+  <g transform="translate(${x-14} ${y-17})" stroke="#0a0a0a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">${inner}</g>
+ </g>`;
+}
+// ícones 28x28 (recriados, traço 2px)
+const ICONS={
+ team:`<circle cx="10" cy="10" r="4"/><circle cx="19" cy="9" r="3.2"/><path d="M3 23c0-5 3-8 7-8s7 3 7 8M16 22c0-4 2-6.5 5-6.5s5 2.5 5 6.5"/>`,
+ monitor:`<rect x="3" y="5" width="22" height="14" rx="1.5"/><path d="M9 24h10M14 19v5M8 12l3 2.5L8 17M13 17h5"/>`,
+ share:`<circle cx="21" cy="6" r="3"/><circle cx="7" cy="14" r="3"/><circle cx="21" cy="22" r="3"/><path d="M9.6 12.6l8.8-5.2M9.6 15.4l8.8 5.2"/>`,
+ cloud:`<path d="M8 21h12a5 5 0 0 0 .8-9.9A7 7 0 0 0 7.3 12.6 4.5 4.5 0 0 0 8 21z"/>`,
+ shield:`<path d="M14 3l9 3.5v7c0 5.5-3.8 9.6-9 11.5-5.2-1.9-9-6-9-11.5v-7z"/><path d="M9.5 14l3 3 6-6"/>`,
+ history:`<path d="M5 14a9 9 0 1 0 2.6-6.4"/><path d="M5 4v5h5M14 9v5.5l3.5 2"/>`,
+ flask:`<path d="M11 3h6M12 3v7l-6.5 11a2 2 0 0 0 1.7 3h13.6a2 2 0 0 0 1.7-3L16 10V3"/><path d="M8.5 18h11"/>`,
+ network:`<rect x="10" y="3" width="8" height="6" rx="1"/><rect x="2" y="18" width="8" height="6" rx="1"/><rect x="18" y="18" width="8" height="6" rx="1"/><path d="M14 9v4M6 18v-5h16v5"/>`,
+ database:`<ellipse cx="14" cy="7" rx="9" ry="3.5"/><path d="M5 7v14c0 2 4 3.5 9 3.5s9-1.5 9-3.5V7M5 14c0 2 4 3.5 9 3.5s9-1.5 9-3.5"/>`,
+};
+const TLOGO=`M12 12h34l6 6v5H37.5v23l-6 6h-5V23H12z`;
+let svg=`<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<defs>
+ <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.5"/></filter>
+ <filter id="glow2" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter>
+ <filter id="hubglow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="14"/></filter>
+ <pattern id="dots" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r=".7" fill="#0a0a0a" fill-opacity=".14"/></pattern>
+ <pattern id="bgdots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="11" cy="11" r="1" fill="#fff" fill-opacity=".07"/></pattern>
+</defs>
+<rect width="${W}" height="${H}" fill="url(#bgdots)"/>`;
+// tubos (3 camadas) + pulsos
+const paths=TILES.map(tubePath);
+svg+=paths.map(d=>`<path class="tube" d="${d}"/>`).join('');
+svg+=paths.map(d=>`<path class="tube-in" d="${d}"/>`).join('');
+svg+=paths.map(d=>`<path class="tube-hl" d="${d}"/>`).join('');
+svg+=paths.map((d,i)=>`<path class="pulse soft" d="${d}" pathLength="100" style="animation-delay:${(i*0.35).toFixed(2)}s"/><path class="pulse" d="${d}" pathLength="100" style="animation-delay:${(i*0.35).toFixed(2)}s"/>`).join('');
+// hub
+const hs=HUB.s, hx=HUB.x, hy=HUB.y, c=hs*0.16;
+const cut=(cx,cy,ss,cc)=>`M${cx-ss/2+cc} ${cy-ss/2} H${cx+ss/2} V${cy+ss/2-cc} L${cx+ss/2-cc} ${cy+ss/2} H${cx-ss/2} V${cy-ss/2+cc} Z`;
+svg+=`<g>
+ <path class="hub-ring" d="${cut(hx,hy+6,hs+26,c+6)}" fill="#fff" fill-opacity=".9" filter="url(#hubglow)"/>
+ <path d="${cut(hx,hy+12,hs,c)}" fill="#0f0f0f"/>
+ <path d="${cut(hx,hy+6,hs,c)}" fill="#2a2a2a"/>
+ <path d="${cut(hx,hy,hs,c)}" fill="#3a3a3a"/>
+ <path d="${cut(hx,hy,hs,c)}" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1.5"/>
+ <path d="${cut(hx,hy-4,hs*0.8,c*0.8)}" fill="#f7f7f7"/>
+ <path d="${cut(hx,hy-4,hs*0.8,c*0.8)}" fill="url(#dots)"/>
+ <g transform="translate(${hx-32} ${hy-36}) scale(1)"><g transform="rotate(-8 32 32)"><path d="${TLOGO}" fill="#0a0a0a"/></g></g>
+</g>`;
+// tiles
+svg+=TILES.map(t=>keycap(t.x,t.y,T,ICONS[t.icon])).join('');
+svg+='</svg>';
+document.getElementById('art').innerHTML=svg;
+</script>
+</body></html>

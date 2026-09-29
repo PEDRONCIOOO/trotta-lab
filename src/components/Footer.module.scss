@@ -1,0 +1,122 @@
+@use "@/ui/styles/mixins" as *;
+
+.footer {
+  margin-top: auto;
+  padding: 64px 0 32px;
+}
+
+.grid {
+  display: grid;
+  gap: 48px;
+
+  @include up(56.25rem) {
+    grid-template-columns: 1.2fr repeat(3, 0.6fr);
+    gap: 40px;
+  }
+}
+
+.newsletter {
+  h3 {
+    font-size: var(--heading-4);
+    margin-bottom: 12px;
+  }
+  p {
+    @include paragraph(4);
+    color: var(--text-on-dark-muted);
+    max-width: 22rem;
+    margin-bottom: 24px;
+  }
+  form {
+    display: flex;
+    max-width: 22rem;
+  }
+  input {
+    flex: 1;
+    min-width: 0;
+    font: inherit;
+    padding: 12px 14px;
+    background: transparent;
+    border: 1.5px solid var(--ink-600);
+    color: var(--white);
+    border-radius: 0 0 0 10px;
+    corner-shape: bevel;
+  }
+  button {
+    padding: 0 16px;
+    background: transparent;
+    border: 1.5px solid var(--ink-600);
+    border-left: 0;
+    color: var(--white);
+    cursor: pointer;
+    border-radius: 0 10px 0 0;
+    corner-shape: bevel;
+    &:hover {
+      background: var(--white);
+      color: var(--ink-950);
+    }
+  }
+}
+
+.col {
+  h4 {
+    font-size: var(--p-5);
+    font-weight: 400;
+    letter-spacing: 0;
+    color: var(--ink-400);
+    margin-bottom: 18px;
+  }
+  li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  a,
+  .linkBtn {
+    font-size: var(--p-4);
+  }
+  .linkBtn {
+    background: none;
+    border: 0;
+    padding: 0;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+  }
+}
+
+.region {
+  margin-top: 48px;
+}
+.regionLabel {
+  font-size: var(--p-5);
+  margin-bottom: 10px;
+}
+.toggle {
+  display: inline-flex;
+  span {
+    padding: 8px 14px;
+    font-size: var(--p-5);
+    font-weight: var(--weight-medium);
+    background: var(--ink-800);
+    color: var(--ink-200);
+    &:last-child {
+      border-radius: 0 10px 0 0;
+      corner-shape: bevel;
+    }
+  }
+  .active {
+    background: var(--white);
+    color: var(--ink-950);
+    border-radius: 0 0 0 10px;
+    corner-shape: bevel;
+  }
+}
+
+.copyright {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-dark);
+  font-size: var(--p-6);
+  color: var(--ink-400);
+}

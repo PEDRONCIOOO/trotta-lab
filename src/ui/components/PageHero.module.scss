@@ -1,0 +1,37 @@
+@use "@/ui/styles/mixins" as *;
+
+.hero {
+  position: relative;
+  overflow: clip;
+}
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 72px;
+  padding-bottom: 96px;
+  @include up($bp-md) {
+    padding-top: 96px;
+    padding-bottom: 128px;
+  }
+}
+.title {
+  max-width: 18ch;
+  @include display(5, 1.08);
+  @include up($bp-sm) {
+    @include display(3);
+  }
+  @include up($bp-xl) {
+    @include display(2);
+  }
+}
+.subtitle {
+  max-width: 40rem;
+  margin-top: 20px;
+  @include paragraph(3);
+  color: var(--text-on-dark-muted);
+}
+.cta {
+  margin-top: 32px;
+}

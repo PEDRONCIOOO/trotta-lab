@@ -1,0 +1,118 @@
+@use "@/ui/styles/mixins" as *;
+
+// Mobile: linha vertical à esquerda. Desktop: linha horizontal com cards alternando acima/abaixo.
+.timeline {
+  position: relative;
+  display: grid;
+  gap: 16px;
+  padding-left: 28px;
+  border-left: 3px solid var(--ink-300);
+
+  @include up($bp-lg) {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    border-left: 0;
+    margin-top: 24px;
+  }
+}
+
+.tag {
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: var(--p-6);
+  font-weight: var(--weight-button);
+  background: var(--ink-950);
+  color: var(--white);
+  @include cut(8px);
+  width: max-content;
+  @include up($bp-lg) {
+    flex: none;
+    z-index: 1;
+  }
+}
+
+.list {
+  display: grid;
+  gap: 16px;
+  @include up($bp-lg) {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 260px;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      height: 3px;
+      background: var(--ink-300);
+    }
+  }
+
+  li {
+    position: relative;
+    @include up($bp-lg) {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      justify-content: center;
+    }
+  }
+}
+
+.card {
+  padding: 14px 16px;
+  font-size: var(--p-5);
+  line-height: 1.45;
+  color: var(--ink-800);
+  b {
+    display: block;
+    margin-bottom: 4px;
+  }
+  @include up($bp-lg) {
+    width: 100%;
+    max-width: 200px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+.above .card {
+  @include up($bp-lg) {
+    bottom: calc(50% + 18px);
+  }
+}
+.below .card {
+  @include up($bp-lg) {
+    top: calc(50% + 18px);
+  }
+}
+
+.dot {
+  position: absolute;
+  left: -36px;
+  top: 16px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--ink-950);
+  border: 3px solid var(--bg-page);
+  box-shadow: 0 0 0 2px var(--ink-950);
+  @include up($bp-lg) {
+    position: static;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}

@@ -1,0 +1,8 @@
+.peak {
+  position: absolute;
+  left: clamp(16px, 6vw, 96px);
+  bottom: -1px;
+  width: 96px;
+  height: 44px;
+  color: var(--bg-page);
+}

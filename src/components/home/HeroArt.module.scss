@@ -1,0 +1,80 @@
+// Rede do hero: tubos em 3 camadas + pulsos de luz (stroke-dash) + anel do hub pulsando.
+// Ajustes rápidos: --speed (ciclo), --pulse-len (comprimento do pulso, em % do tubo).
+.art {
+  --speed: 3.2s;
+  --pulse-len: 16;
+  overflow: visible;
+}
+
+.tube,
+.tubeIn,
+.tubeHl,
+.pulse {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.tube {
+  stroke: #2c2c2c;
+  stroke-width: 18;
+}
+.tubeIn {
+  stroke: #141414;
+  stroke-width: 11;
+}
+.tubeHl {
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 2;
+  transform: translateY(-3px);
+}
+
+.pulse {
+  stroke: #fff;
+  stroke-width: 8;
+  stroke-dasharray: var(--pulse-len) 100;
+  stroke-dashoffset: calc(100 + var(--pulse-len));
+  animation: flow var(--speed) linear infinite;
+  filter: url(#hn-glow);
+}
+.soft {
+  stroke-width: 12;
+  opacity: 0.35;
+  filter: url(#hn-glow2);
+}
+
+.hubRing {
+  animation: ring var(--speed) var(--ease-lamp) infinite;
+}
+
+.tile {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes flow {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes ring {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  12% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse,
+  .hubRing {
+    animation: none;
+  }
+  .pulse {
+    opacity: 0;
+  }
+}

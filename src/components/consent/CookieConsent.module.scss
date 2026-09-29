@@ -1,0 +1,41 @@
+@use "@/ui/styles/mixins" as *;
+
+.banner {
+  position: fixed;
+  z-index: 60;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  display: grid;
+  gap: 16px;
+  padding: 20px;
+  background: var(--white);
+  color: var(--ink-950);
+  box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--ink-200);
+
+  @include up($bp-md) {
+    left: auto;
+    max-width: 520px;
+    grid-template-columns: 1fr;
+    right: 24px;
+    bottom: 24px;
+  }
+}
+.text {
+  b {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: var(--weight-button);
+  }
+  p {
+    font-size: var(--p-5);
+    line-height: 1.5;
+    color: var(--text-muted);
+  }
+}
+.actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}

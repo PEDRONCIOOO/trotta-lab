@@ -1,0 +1,42 @@
+// Breakpoints (mesma escala Tailwind usada na referência)
+$bp-xs: 25rem;
+$bp-sm: 40rem;
+$bp-md: 48rem;
+$bp-lg: 64rem;
+$bp-xl: 80rem;
+
+@mixin up($bp) {
+  @media (min-width: $bp) {
+    @content;
+  }
+}
+
+@mixin display($n, $lh: 1.04) {
+  font-size: var(--display-#{$n});
+  font-weight: var(--weight-display);
+  letter-spacing: var(--tracking-display);
+  line-height: $lh;
+}
+
+@mixin heading($n, $lh: 1.15) {
+  font-size: var(--heading-#{$n});
+  font-weight: var(--weight-display);
+  letter-spacing: var(--tracking-tight);
+  line-height: $lh;
+}
+
+@mixin paragraph($n, $lh: 1.6) {
+  font-size: var(--p-#{$n});
+  font-weight: var(--weight-book);
+  line-height: $lh;
+}
+
+@mixin cut($size: var(--cut)) {
+  border-radius: 0 $size 0 $size;
+  corner-shape: bevel;
+}
+
+@mixin card {
+  background: var(--white);
+  box-shadow: var(--shadow-card);
+}

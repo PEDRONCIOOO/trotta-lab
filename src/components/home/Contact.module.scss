@@ -1,0 +1,75 @@
+@use "@/ui/styles/mixins" as *;
+
+.grid {
+  display: grid;
+  gap: 40px;
+  @include up($bp-lg) {
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+  }
+}
+.title {
+  @include heading(1, 1.08);
+  letter-spacing: var(--tracking-display);
+  @include up($bp-md) {
+    @include display(4, 1.06);
+  }
+}
+.lead {
+  margin-top: 16px;
+  @include paragraph(3);
+  color: var(--text-muted);
+}
+.alt {
+  margin-top: 24px;
+  font-size: var(--p-5);
+  color: var(--text-muted);
+}
+
+.form {
+  display: grid;
+  gap: 16px;
+}
+.row {
+  display: grid;
+  gap: 16px;
+  @include up($bp-sm) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.field {
+  display: grid;
+  gap: 6px;
+  label {
+    font-size: var(--p-5);
+    font-weight: var(--weight-medium);
+  }
+  input,
+  select,
+  textarea {
+    font: inherit;
+    font-size: var(--p-4);
+    padding: 12px 14px;
+    border: 1.5px solid var(--ink-300);
+    background: var(--white);
+    color: var(--ink-950);
+    @include cut(10px);
+    &:focus-visible {
+      outline: 2px solid var(--ink-950);
+      outline-offset: 2px;
+      border-color: var(--ink-950);
+    }
+  }
+  textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+}
+.submit {
+  justify-self: start;
+  margin-top: 8px;
+}
+.fine {
+  font-size: var(--p-6);
+  color: var(--ink-500);
+}

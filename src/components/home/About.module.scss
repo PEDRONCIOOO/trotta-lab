@@ -1,0 +1,30 @@
+@use "@/ui/styles/mixins" as *;
+
+.grid {
+  display: grid;
+  gap: 32px;
+  @include up($bp-lg) {
+    grid-template-columns: 1.1fr 1fr;
+    gap: 64px;
+  }
+}
+.title {
+  @include heading(1, 1.08);
+  letter-spacing: var(--tracking-display);
+  @include up($bp-md) {
+    @include display(4, 1.06);
+  }
+  em {
+    font-style: normal;
+    color: var(--ink-500);
+  }
+}
+.body p {
+  @include paragraph(3);
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  strong {
+    color: var(--ink-950);
+    font-weight: var(--weight-medium);
+  }
+}

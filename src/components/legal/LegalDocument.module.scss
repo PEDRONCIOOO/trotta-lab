@@ -1,0 +1,39 @@
+@use "@/ui/styles/mixins" as *;
+
+.wrap {
+  padding-block: 56px 96px;
+}
+.prose {
+  max-width: 44rem;
+  h2 {
+    @include heading(3);
+    margin: 40px 0 12px;
+  }
+  p,
+  li {
+    @include paragraph(4);
+    color: var(--ink-800);
+    margin-bottom: 12px;
+  }
+  ul {
+    padding-left: 0;
+  }
+  li {
+    position: relative;
+    padding-left: 20px;
+    &::before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: 0.6em;
+      width: 7px;
+      height: 7px;
+      background: var(--ink-950);
+      rotate: 45deg;
+    }
+  }
+}
+.intro {
+  font-size: var(--p-3) !important;
+  color: var(--text-muted) !important;
+}

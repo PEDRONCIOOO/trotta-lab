@@ -1,0 +1,115 @@
+@use "./mixins" as *;
+@use "../tokens/tokens";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-sans);
+  font-weight: var(--weight-book);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg-page);
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-weight: var(--weight-display);
+  letter-spacing: var(--tracking-display);
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  font: inherit;
+}
+
+// ---- utilitários globais (equivalentes às classes .cut/.cave/.chip da referência)
+.cut {
+  @include cut;
+}
+.cut-sm {
+  @include cut(var(--cut-sm));
+}
+.cut-lg {
+  @include cut(var(--cut-lg));
+}
+
+.card {
+  @include card;
+}
+
+.link-underline {
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1.5px;
+  text-decoration-color: color-mix(in oklch, currentColor 40%, transparent);
+  transition: text-decoration-color var(--duration);
+
+  &:hover {
+    text-decoration-color: currentColor;
+  }
+}
+
+// "cave": gradiente radial + textura em CSS puro (sem asset)
+.cave {
+  position: relative;
+  background-color: var(--bg-dark);
+  background-image:
+    radial-gradient(120% 90% at 50% 0, transparent 45%, #000 100%),
+    repeating-linear-gradient(115deg, transparent 0 6px, rgba(255, 255, 255, 0.035) 6px 7px),
+    repeating-linear-gradient(-70deg, transparent 0 9px, rgba(255, 255, 255, 0.02) 9px 10px);
+}
+
+.on-dark {
+  background: var(--bg-dark);
+  color: var(--text-on-dark);
+}
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

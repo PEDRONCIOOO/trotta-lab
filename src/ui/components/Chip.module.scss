@@ -1,0 +1,34 @@
+@use "@/ui/styles/mixins" as *;
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.2rem 0.65rem;
+  font-size: var(--p-6);
+  font-weight: var(--weight-medium);
+  line-height: 1.4;
+  color: var(--ink-950);
+  background: var(--gem-light);
+  @include cut(7px);
+
+  &::before {
+    content: "";
+    width: 0.55rem;
+    height: 0.55rem;
+    background: var(--gem-deep);
+    rotate: 45deg;
+  }
+}
+.default {
+}
+.lamp {
+  background: var(--lamp);
+}
+.dark {
+  background: var(--ink-800);
+  color: var(--white);
+  &::before {
+    background: var(--white);
+  }
+}

@@ -1,0 +1,98 @@
+@use "@/ui/styles/mixins" as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg-dark);
+  color: var(--text-on-dark);
+}
+
+.topbar {
+  padding: 6px 16px;
+  font-size: var(--p-5);
+  text-align: center;
+  color: var(--ink-300);
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  font-weight: var(--weight-display);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.menu {
+  display: none;
+  align-items: center;
+  gap: 28px;
+
+  @include up(56.25rem) {
+    display: flex;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  li a:not(.cta) {
+    font-size: var(--p-4);
+    font-weight: 400;
+  }
+}
+
+.cta {
+  background: var(--white) !important;
+  color: var(--ink-950) !important;
+  &:hover {
+    background: var(--ink-200) !important;
+  }
+}
+
+.menuBtn {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+
+  @include up(56.25rem) {
+    display: none;
+  }
+}
+
+.mobile {
+  display: none;
+  padding: 16px 0 24px;
+  border-top: 1px solid var(--border-dark);
+
+  a:not(.cta) {
+    display: block;
+    padding: 12px 0;
+    font-size: var(--heading-4);
+    font-weight: 400;
+    text-decoration: none;
+  }
+  .cta {
+    margin-top: 12px;
+  }
+}
+.open {
+  display: block;
+}

@@ -1,0 +1,21 @@
+@use "@/ui/styles/mixins" as *;
+
+.section {
+  position: relative;
+  padding-block: var(--section-y);
+}
+.light {
+  @include up($bp-sm) {
+    padding-block: var(--section-y-lg);
+  }
+}
+.dark {
+}
+.dark-soft {
+  background: var(--bg-dark-soft);
+}
+.cave {
+}
+.flushTop {
+  padding-top: 0;
+}

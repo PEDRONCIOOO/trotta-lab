@@ -1,0 +1,26 @@
+@use "@/ui/styles/mixins" as *;
+
+.wrap {
+  text-align: center;
+}
+.title {
+  @include heading(1, 1.08);
+  letter-spacing: var(--tracking-display);
+  @include up($bp-md) {
+    @include display(4, 1.06);
+  }
+}
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  max-width: 60rem;
+  margin: 48px auto 0;
+}
+.chip {
+  background: var(--white);
+  box-shadow: var(--shadow-card);
+  font-size: var(--p-5);
+  padding: 0.55rem 0.9rem;
+}
