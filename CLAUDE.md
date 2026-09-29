@@ -54,6 +54,10 @@ Reference static prototype: `landing/index.html` (kept for comparison; not serve
   lights, contact shadows), `HeroSceneLoader.tsx` (`dynamic(ssr:false)`, SVG `HeroArt` as fallback).
   `display.hero3d` in `config.ts` switches back to the static SVG. Keep three/r3f/drei versions
   pinned to React 18-compatible majors (r3f 8, drei 9).
+- **Contact form → e-mail**: `Contact.tsx` POSTs JSON to `contact.endpoint` (`/api/contact`).
+  `src/app/api/contact/route.ts` validates (`lib/contact-email.ts`), drops honeypot (`website`) hits,
+  rate-limits 5/10min per IP, and sends via Resend HTTP API with `reply_to` = visitor. Env:
+  `RESEND_API_KEY` (required), `CONTACT_TO`, `CONTACT_FROM` — see `.env.example`.
 - Fonts via `next/font/google` in `layout.tsx` (Geologica, Source Serif 4, JetBrains Mono) exposed
   as `--font-geologica`, `--font-source-serif`, `--font-jetbrains`.
 

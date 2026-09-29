@@ -1,5 +1,6 @@
 "use client";
 
+import classNames from "classnames";
 import { type FormEvent, useState } from "react";
 import { Button, Eyebrow, Reveal, Section } from "@/ui/components";
 import { contact, contactSection as c } from "@/app/resources";
@@ -10,15 +11,40 @@ interface ContactProps {
   lead?: string;
 }
 
-export function Contact({ title = c.title, lead = c.lead }: ContactProps = {}) {
-  const [sent, setSent] = useState(false);
+type Status = "idle" | "sending" | "success" | "error" | "rateLimited";
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    if (!contact.formAction) {
-      e.preventDefault();
-      setSent(true);
+export function Contact({ title = c.title, lead = c.lead }: ContactProps = {}) {
+  const [status, setStatus] = useState<Status>("idle");
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (status === "sending") return;
+    const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form).entries());
+    setStatus("sending");
+    try {
+      const res = await fetch(contact.endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...data, page: window.location.pathname }),
+      });
+      if (res.ok) {
+        setStatus("success");
+        form.reset();
+      } else {
+        setStatus(res.status === 429 ? "rateLimited" : "error");
+      }
+    } catch {
+      setStatus("error");
     }
   };
+
+  const message =
+    status === "sending" ? c.status.sending
+    : status === "success" ? c.status.success
+    : status === "error" ? c.status.error
+    : status === "rateLimited" ? c.status.rateLimited
+    : c.fine;
 
   return (
     <Section id="contato">
@@ -34,13 +60,18 @@ export function Contact({ title = c.title, lead = c.lead }: ContactProps = {}) {
         </Reveal>
 
         <Reveal>
-          <form action={contact.formAction || undefined} method="post" onSubmit={onSubmit} className={styles.form}>
-            <div className={styles.row}>
-              <Field id="name" label={c.fields.name} required />
-              <Field id="email" label={c.fields.email} type="email" required />
+          <form onSubmit={onSubmit} className={styles.form} noValidate={false}>
+            {/* honeypot anti-spam: invisível para pessoas, bots costumam preencher */}
+            <div className={styles.hp} aria-hidden="true">
+              <label htmlFor="website">Website</label>
+              <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
             </div>
             <div className={styles.row}>
-              <Field id="company" label={c.fields.company} required />
+              <Field id="name" label={c.fields.name} required autoComplete="name" />
+              <Field id="email" label={c.fields.email} type="email" required autoComplete="email" />
+            </div>
+            <div className={styles.row}>
+              <Field id="company" label={c.fields.company} required autoComplete="organization" />
               <Field id="source" label={c.fields.source} />
             </div>
             <div className={styles.row}>
@@ -50,10 +81,21 @@ export function Contact({ title = c.title, lead = c.lead }: ContactProps = {}) {
             <Select id="budget" label={c.fields.budget} options={c.budgets} placeholder={c.fields.placeholder} required />
             <div className={styles.field}>
               <label htmlFor="message">{c.fields.message}</label>
-              <textarea id="message" name="message" required />
+              <textarea id="message" name="message" required maxLength={5000} />
             </div>
-            <Button type="submit" className={styles.submit}>{c.submit}</Button>
-            <p className={styles.fine}>{sent ? "Recebido! (demo — configure contact.formAction em config.ts)" : c.fine}</p>
+            <Button type="submit" className={styles.submit} disabled={status === "sending"}>
+              {status === "sending" ? c.status.sending : c.submit}
+            </Button>
+            <p
+              className={classNames(styles.fine, {
+                [styles.ok]: status === "success",
+                [styles.err]: status === "error" || status === "rateLimited",
+              })}
+              role="status"
+              aria-live="polite"
+            >
+              {message}
+            </p>
           </form>
         </Reveal>
       </div>
@@ -61,11 +103,13 @@ export function Contact({ title = c.title, lead = c.lead }: ContactProps = {}) {
   );
 }
 
-function Field({ id, label, type = "text", required }: { id: string; label: string; type?: string; required?: boolean }) {
+function Field({
+  id, label, type = "text", required, autoComplete,
+}: { id: string; label: string; type?: string; required?: boolean; autoComplete?: string }) {
   return (
     <div className={styles.field}>
       <label htmlFor={id}>{label}</label>
-      <input id={id} name={id} type={type} required={required} />
+      <input id={id} name={id} type={type} required={required} autoComplete={autoComplete} />
     </div>
   );
 }

@@ -73,3 +73,22 @@
   font-size: var(--p-6);
   color: var(--ink-500);
 }
+.ok {
+  color: var(--ink-950);
+  font-weight: var(--weight-medium);
+}
+.err {
+  color: var(--ink-950);
+  font-weight: var(--weight-medium);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.2em;
+}
+// honeypot: fora da tela, sem display:none (alguns bots ignoram campos ocultos)
+.hp {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

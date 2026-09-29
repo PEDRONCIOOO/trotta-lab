@@ -205,10 +205,10 @@ const testimonials = {
     role: "Head of Platform",
   },
   items: [
-    { brand: "empresa.com", quote: "A parceria mudou o jogo para o nosso time de engenharia. Os desenvolvedores se integraram sem atrito e contribuíram de forma relevante desde o primeiro dia.", name: "Nome", role: "Diretor de Engenharia" },
-    { brand: "empresa.ai", quote: "O diferencial é a capacidade de escalar times com talento sob medida, entendendo o nosso negócio e se adaptando rápido às mudanças de roadmap.", name: "Nome", role: "CDO" },
-    { brand: "empresa.com.br", quote: "Recomendamos fortemente o time inteiro — do comercial ao técnico — para empresas que buscam um parceiro sólido, confiável e altamente qualificado.", name: "Nome", role: "CTO" },
-    { brand: "produto.io", quote: "Saímos de um MVP frágil para um produto operando com clientes reais em semanas, sem perder o que já tinha sido validado.", name: "Nome", role: "Fundador" },
+    { brand: "axiadigitalsolutions.com.br", quote: "A parceria mudou o jogo para o nosso time de engenharia. Os desenvolvedores se integraram sem atrito e contribuíram de forma relevante desde o primeiro dia.", name: "Mateus Santos", role: "Diretor de Engenharia" },
+    { brand: "hobbo.ai", quote: "O diferencial é a capacidade de escalar times com talento sob medida, entendendo o nosso negócio e se adaptando rápido às mudanças de roadmap.", name: "Jane Silva", role: "CDO" },
+    { brand: "devforge.com", quote: "Recomendamos fortemente o time inteiro — do comercial ao técnico — para empresas que buscam um parceiro sólido, confiável e altamente qualificado.", name: "Sara Miller", role: "CTO" },
+    { brand: "scaleup.com.br", quote: "Saímos de um MVP frágil para um produto operando com clientes reais em semanas, sem perder o que já tinha sido validado.", name: "Ann", role: "Diretor" },
   ] satisfies Testimonial[],
   disclaimer: "* Depoimentos ilustrativos — substituir por citações reais autorizadas.",
 };
@@ -282,8 +282,14 @@ const contactSection = {
     "Auditoria técnica / avaliação de time", "Discovery", "MVP Build", "Rebuild de MVP",
     "Evolução de Produto", "Parceria Estratégica",
   ],
-  budgets: ["Até R$ 250 mil", "R$ 250 mil a R$ 750 mil", "R$ 750 mil a R$ 1,25 mi", "Acima de R$ 1,25 mi", "A definir"],
+  budgets: ["Até R$ 50 mil", "R$ 150 mil a R$ 500 mil", "R$ 750 mil a R$ 1,25 mi", "Acima de R$ 1,25 mi", "A definir"],
   submit: "Levar meu produto para a bancada",
+  status: {
+    sending: "Enviando...",
+    success: "Mensagem enviada! Recebemos seu contato e retornamos em breve.",
+    error: "Não foi possível enviar agora. Tente de novo ou escreva direto para o e-mail ao lado.",
+    rateLimited: "Muitas tentativas em pouco tempo. Aguarde alguns minutos e tente novamente.",
+  },
   fine: "Depois do contato, alguém do time retorna para agendar uma conversa. Vamos analisar o contexto e responder com o caminho mais adequado para o seu estágio.",
 };
 
@@ -416,7 +422,7 @@ const servicesPage = {
 };
 
 // ---------------------------------------------------------------------------
-// Página /sobre (modelo: codeminer42.com/about)
+// Página /sobre
 // Arrays vazios (team, events, impact.highlights) ocultam a seção correspondente.
 // ---------------------------------------------------------------------------
 export type Milestone = { year?: string; text: string };
@@ -496,9 +502,9 @@ export type LegalDoc = { meta: { title: string; description: string }; title: st
 const legal = {
   controller: {
     name: "Trotta [Razão Social Ltda.]",
-    cnpj: "[00.000.000/0001-00]",
-    address: "[Endereço completo, Cidade – UF]",
-    dpoEmail: "privacidade@trotta.com.br",
+    cnpj: "[53.198.666/0001-62]",
+    address: "[Florianópolis - Santa Catarina]",
+    dpoEmail: "privacidade@lab.trotta.dev",
   },
   privacy: {
     meta: { title: "Política de Privacidade", description: "Como a Trotta coleta, usa e protege dados pessoais, nos termos da LGPD (Lei 13.709/2018)." },
@@ -507,7 +513,7 @@ const legal = {
     intro:
       "Esta Política descreve como a Trotta (“nós”) trata dados pessoais de visitantes do site e de pessoas que entram em contato conosco, em conformidade com a Lei Geral de Proteção de Dados Pessoais — LGPD (Lei nº 13.709/2018).",
     sections: [
-      { title: "1. Quem somos (controlador)", paragraphs: ["Trotta [Razão Social Ltda.], CNPJ [00.000.000/0001-00], com sede em [Endereço completo, Cidade – UF]. Encarregado de dados (DPO): privacidade@trotta.com.br."] },
+      { title: "1. Quem somos (controlador)", paragraphs: ["Trotta [Razão Social Ltda.], CNPJ [53.198.666/0001-62], com sede em [Florianópolis - Santa Catarina]. Encarregado de dados (DPO): privacidade@trotta.com.br."] },
       { title: "2. Quais dados coletamos", bullets: [
         "Dados que você fornece: nome, e-mail, empresa, como nos conheceu, estágio do projeto, tipo de necessidade, faixa de orçamento e mensagem, enviados pelo formulário de contato; e-mail para a newsletter.",
         "Dados coletados automaticamente: endereço IP, tipo de navegador e dispositivo, páginas visitadas, data e hora de acesso e identificadores de cookies (veja a Política de Cookies).",

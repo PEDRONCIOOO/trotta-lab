@@ -23,8 +23,8 @@ const display = {
 };
 
 const contact = {
-  email: "pedrojava1911@hotmail.com",
-  formAction: "", // endpoint do formulário (vazio = demo, só preventDefault)
+  email: "pedrojava1911@hotmail.com", // exibido no site (mailto)
+  endpoint: "/api/contact", // POST do formulário → e-mail (src/app/api/contact/route.ts)
 };
 
 const consent = {
