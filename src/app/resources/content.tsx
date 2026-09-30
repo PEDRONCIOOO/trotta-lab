@@ -469,6 +469,7 @@ const aboutPage = {
     description: "Engenheiros que gostam de resolver problemas de verdade.",
     members: [
       { name: "Pedro Trotta", role: "Fundador & Engenheiro de Software", quote: "Software de verdade, sem colcha de retalhos.", avatar: "/images/team/pedro.jpg" },
+      { name: "Lucas Konkiewitz", role: "Engenheiro de Software", quote: "Cada peça só vem quando é necessário.", avatar: "/images/team/lucasmauricio.png" },
     ] satisfies TeamMember[],
     cta: { label: "Trabalhe conosco", href: "/#contato" },
   },
