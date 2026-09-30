@@ -472,6 +472,8 @@ const aboutPage = {
       { name: "Lucas Konkiewitz", role: "Engenheiro de Software", quote: "Cada peça só vem quando é necessário.", avatar: "/images/team/lucasmauricio.png" },
       { name: "Gildácio Lopes", role: "Engenheiro de Software", quote: "8 horas é meio período.", avatar: "/images/team/gildacio.png" },
       { name: "Raphael Titan", role: "Game Developer", quote: "I'm a game dev by the day", avatar: "/images/team/titan.png" },
+      { name: "Lucas Forte", role: "Creative Marketing", quote: "Brilhando os olhos das melhores empresas do país!", avatar: "/images/team/lucasforte.png" },
+      { name: "Vitoria Petek", role: "3D/VFX/UI Artist", quote: "Trabalhando...", avatar: "/images/team/vitoriapetek.png" },
     ] satisfies TeamMember[],
     cta: { label: "Trabalhe conosco", href: "/#contato" },
   },
