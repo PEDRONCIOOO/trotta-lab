@@ -34,10 +34,7 @@ const consent = {
 };
 
 const social = [
-  { name: "LinkedIn", link: "https://www.linkedin.com/in/pedro-trotta-853b17323/" },
-  { name: "Instagram", link: "https://instagram.com/devtrotta" },
-  { name: "GitHub", link: "https://github.com/PEDRONCIOOO" },
-  { name: "X", link: "https://x.com/pedronkiooo" },
+  { name: "LinkedIn", link: "https://www.linkedin.com/company/trotta-lab/" },
 ];
 
 export { baseURL, routes, style, display, contact, consent, social };
