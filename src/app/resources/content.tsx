@@ -471,6 +471,7 @@ const aboutPage = {
       { name: "Pedro Trotta", role: "Fundador & Engenheiro de Software", quote: "Software de verdade, sem colcha de retalhos.", avatar: "/images/team/pedro.jpg" },
       { name: "Lucas Konkiewitz", role: "Engenheiro de Software", quote: "Cada peça só vem quando é necessário.", avatar: "/images/team/lucasmauricio.png" },
       { name: "Gildácio Lopes", role: "Engenheiro de Software", quote: "8 horas é meio período.", avatar: "/images/team/gildacio.png" },
+      { name: "Raphael Titan", role: "Game Developer", quote: "I'm a game dev by the day", avatar: "/images/team/titan.png" },
     ] satisfies TeamMember[],
     cta: { label: "Trabalhe conosco", href: "/#contato" },
   },
