@@ -23,7 +23,7 @@ const display = {
 };
 
 const contact = {
-  email: "pedrojava1911@hotmail.com", // exibido no site (mailto)
+  email: "contato@trotta.dev", // exibido no site (mailto) — encaminhado via Cloudflare Email Routing
   endpoint: "/api/contact", // POST do formulário → e-mail (src/app/api/contact/route.ts)
   thankYouPath: "/obrigado", // página de confirmação (conversão do Google Ads)
 };

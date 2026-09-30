@@ -504,7 +504,7 @@ const legal = {
     name: "Trotta [Razão Social Ltda.]",
     cnpj: "[53.198.666/0001-62]",
     address: "[Florianópolis - Santa Catarina]",
-    dpoEmail: "privacidade@lab.trotta.dev",
+    dpoEmail: "privacidade@trotta.dev",
   },
   privacy: {
     meta: { title: "Política de Privacidade", description: "Como a Trotta coleta, usa e protege dados pessoais, nos termos da LGPD (Lei 13.709/2018)." },
@@ -513,7 +513,7 @@ const legal = {
     intro:
       "Esta Política descreve como a Trotta (“nós”) trata dados pessoais de visitantes do site e de pessoas que entram em contato conosco, em conformidade com a Lei Geral de Proteção de Dados Pessoais — LGPD (Lei nº 13.709/2018).",
     sections: [
-      { title: "1. Quem somos (controlador)", paragraphs: ["Trotta [Razão Social Ltda.], CNPJ [53.198.666/0001-62], com sede em [Florianópolis - Santa Catarina]. Encarregado de dados (DPO): privacidade@trotta.com.br."] },
+      { title: "1. Quem somos (controlador)", paragraphs: ["Trotta [Razão Social Ltda.], CNPJ [53.198.666/0001-62], com sede em [Florianópolis - Santa Catarina]. Encarregado de dados (DPO): privacidade@trotta.dev."] },
       { title: "2. Quais dados coletamos", bullets: [
         "Dados que você fornece: nome, e-mail, empresa, como nos conheceu, estágio do projeto, tipo de necessidade, faixa de orçamento e mensagem, enviados pelo formulário de contato; e-mail para a newsletter.",
         "Dados coletados automaticamente: endereço IP, tipo de navegador e dispositivo, páginas visitadas, data e hora de acesso e identificadores de cookies (veja a Política de Cookies).",
@@ -533,11 +533,11 @@ const legal = {
         "Registros de acesso (logs): 6 meses, conforme o Marco Civil da Internet (Lei 12.965/2014, art. 15).",
         "Registro do consentimento de cookies: 180 dias, no seu navegador.",
       ] },
-      { title: "6. Seus direitos", paragraphs: ["Você pode, a qualquer momento, solicitar: confirmação da existência de tratamento; acesso aos dados; correção de dados incompletos ou desatualizados; anonimização, bloqueio ou eliminação; portabilidade; informação sobre compartilhamento; revogação do consentimento; e oposição a tratamento irregular (art. 18 da LGPD). Para exercer, escreva para privacidade@trotta.com.br. Respondemos em até 15 dias."] },
+      { title: "6. Seus direitos", paragraphs: ["Você pode, a qualquer momento, solicitar: confirmação da existência de tratamento; acesso aos dados; correção de dados incompletos ou desatualizados; anonimização, bloqueio ou eliminação; portabilidade; informação sobre compartilhamento; revogação do consentimento; e oposição a tratamento irregular (art. 18 da LGPD). Para exercer, escreva para privacidade@trotta.dev. Respondemos em até 15 dias."] },
       { title: "7. Segurança", paragraphs: ["Adotamos medidas técnicas e administrativas para proteger os dados contra acessos não autorizados, perda, alteração ou destruição, como criptografia em trânsito (HTTPS), controle de acesso e minimização de dados. Nenhum sistema é infalível; em caso de incidente relevante, comunicaremos você e a ANPD conforme a lei."] },
       { title: "8. Cookies", paragraphs: ["O uso de cookies está detalhado na nossa Política de Cookies. Cookies não essenciais só são ativados com o seu consentimento, que pode ser alterado a qualquer momento em “Preferências de cookies”, no rodapé do site."] },
       { title: "9. Alterações", paragraphs: ["Podemos atualizar esta Política para refletir mudanças legais ou operacionais. A versão vigente estará sempre nesta página, com a data de atualização no topo."] },
-      { title: "10. Contato", paragraphs: ["Dúvidas ou solicitações: privacidade@trotta.com.br."] },
+      { title: "10. Contato", paragraphs: ["Dúvidas ou solicitações: privacidade@trotta.dev."] },
     ],
   } satisfies LegalDoc,
   cookies: {
@@ -558,7 +558,7 @@ const legal = {
         "No navegador: você pode bloquear ou apagar cookies nas configurações (Chrome, Firefox, Safari, Edge). Bloquear os cookies necessários pode afetar o funcionamento do site.",
       ] },
       { title: "5. Base legal", paragraphs: ["Cookies necessários: legítimo interesse (LGPD, art. 7º, IX). Cookies analíticos: consentimento (art. 7º, I), livre, informado e revogável."] },
-      { title: "6. Contato", paragraphs: ["privacidade@trotta.com.br. Veja também a nossa Política de Privacidade."] },
+      { title: "6. Contato", paragraphs: ["privacidade@trotta.dev. Veja também a nossa Política de Privacidade."] },
     ],
   } satisfies LegalDoc,
 };
