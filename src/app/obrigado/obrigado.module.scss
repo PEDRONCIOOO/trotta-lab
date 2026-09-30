@@ -1,0 +1,42 @@
+@use "@/ui/styles/mixins" as *;
+
+.wrap {
+  padding-block: 56px 96px;
+}
+.title {
+  @include heading(2);
+  margin-bottom: 24px;
+}
+.steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 20px;
+  @include up($bp-md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  li {
+    padding: 28px 24px;
+    h3 {
+      @include heading(4);
+      margin-top: 12px;
+    }
+    p {
+      margin-top: 8px;
+      @include paragraph(5);
+      color: var(--text-muted);
+    }
+  }
+}
+.num {
+  font-family: var(--font-mono);
+  font-size: var(--p-6);
+  color: var(--ink-500);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 40px;
+}

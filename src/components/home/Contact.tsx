@@ -1,6 +1,7 @@
 "use client";
 
 import classNames from "classnames";
+import { useRouter } from "next/navigation";
 import { type FormEvent, useState } from "react";
 import { Button, Eyebrow, Reveal, Section } from "@/ui/components";
 import { contact, contactSection as c } from "@/app/resources";
@@ -15,6 +16,7 @@ type Status = "idle" | "sending" | "success" | "error" | "rateLimited";
 
 export function Contact({ title = c.title, lead = c.lead }: ContactProps = {}) {
   const [status, setStatus] = useState<Status>("idle");
+  const router = useRouter();
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -31,6 +33,7 @@ export function Contact({ title = c.title, lead = c.lead }: ContactProps = {}) {
       if (res.ok) {
         setStatus("success");
         form.reset();
+        router.push(contact.thankYouPath); // página de confirmação (conversão)
       } else {
         setStatus(res.status === 429 ? "rateLimited" : "error");
       }

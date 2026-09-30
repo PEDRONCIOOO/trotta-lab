@@ -572,6 +572,23 @@ const cookieBanner = {
   manage: "Preferências de cookies",
 };
 
+// ---------------------------------------------------------------------------
+// Página /obrigado — confirmação após envio do formulário (conversão Google Ads)
+// ---------------------------------------------------------------------------
+const thanks = {
+  meta: { title: "Mensagem recebida", description: "Recebemos seu contato. Em breve alguém do time retorna." },
+  title: "Mensagem recebida.",
+  subtitle: "Obrigado pelo contato. Vamos analisar o contexto e retornar com o caminho mais adequado para o seu estágio.",
+  nextTitle: "O que acontece agora",
+  steps: [
+    { num: "01", title: "Leitura", text: "Lemos sua mensagem e o estágio do projeto." },
+    { num: "02", title: "Retorno", text: "Respondemos por e-mail para agendar uma conversa." },
+    { num: "03", title: "Conversa", text: "Primeira call para entender contexto, oportunidade e próximos passos." },
+  ],
+  primary: { label: "Voltar ao início", href: "/" },
+  secondary: { label: "Ver serviços", href: "/servicos" },
+};
+
 const footer = {
   newsletter: {
     title: "Assine nossa newsletter",
@@ -593,4 +610,4 @@ const footer = {
   copyright: `© ${new Date().getFullYear()} Trotta. Todos os direitos reservados.`,
 };
 
-export { brand, nav, hero, sectors, services, lab, process, offers, testimonials, expertise, about, projects, contactSection, servicesPage, aboutPage, legal, cookieBanner, footer };
+export { brand, nav, hero, sectors, services, lab, process, offers, testimonials, expertise, about, projects, contactSection, servicesPage, aboutPage, legal, cookieBanner, thanks, footer };

@@ -1,5 +1,5 @@
 // Configuração global do site (equivalente ao config.js do portfólio)
-const baseURL = "trotta.com.br";
+const baseURL = "lab.trotta.dev";
 
 const routes = {
   "/": true,
@@ -25,6 +25,7 @@ const display = {
 const contact = {
   email: "pedrojava1911@hotmail.com", // exibido no site (mailto)
   endpoint: "/api/contact", // POST do formulário → e-mail (src/app/api/contact/route.ts)
+  thankYouPath: "/obrigado", // página de confirmação (conversão do Google Ads)
 };
 
 const consent = {
