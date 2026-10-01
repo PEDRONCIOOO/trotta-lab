@@ -479,6 +479,7 @@ const aboutPage = {
       {name: "Cleverton Jaber", role: "Engenheiro de Software", quote: "Softwares reais para mudanças reais.", avatar: "/images/team/cleverton.jpg" },
       { name: "Marco Galdino Dias", role: "Engenheiro de Software", quote: "O simples bem feito vale mais bem mais que mil linhas de código...", avatar: "/images/team/mago.jpg" },
     ] satisfies TeamMember[],
+    showMore: "Ver mais",
     cta: { label: "Trabalhe conosco", href: "/#contato" },
   },
   impact: {

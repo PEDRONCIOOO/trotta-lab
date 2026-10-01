@@ -10,6 +10,33 @@
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+// Hide items beyond 2 rows per breakpoint
+.collapsed {
+  // Mobile (1 col): show 2 items
+  > :nth-child(n + 3) {
+    display: none;
+  }
+  // Tablet (2 cols): show 4 items
+  @include up($bp-sm) {
+    > :nth-child(n + 3) {
+      display: flex;
+    }
+    > :nth-child(n + 5) {
+      display: none;
+    }
+  }
+  // Desktop (4 cols): show 8 items
+  @include up($bp-lg) {
+    > :nth-child(n + 5) {
+      display: flex;
+    }
+    > :nth-child(n + 9) {
+      display: none;
+    }
+  }
+}
+
 .card {
   display: flex;
   flex-direction: column;
@@ -50,4 +77,9 @@
   margin-top: 4px;
   font-size: var(--p-6);
   color: var(--ink-500);
+}
+.showMore {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
 }
