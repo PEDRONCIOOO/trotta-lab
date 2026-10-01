@@ -475,7 +475,8 @@ const aboutPage = {
       { name: "Lucas Forte", role: "Criativo de Marketing", quote: "Brilhando os olhos das melhores empresas do país!", avatar: "/images/team/lucasforte.png" },
       { name: "Vitoria Petek", role: "3D/VFX/UI Artista", quote: "Trabalhando...", avatar: "/images/team/vitoriapetek.png" },
       { name: "Douglas Dias", role: "Engenheiro de Software", quote: "Que nosso trabalho atinja milhões.", avatar: "/images/team/douglasdias.png" },
-      { name: "Bernardo Righi", role: "Engenheiro de Software", quote: "My love for tech comes from home: my dad, Rodrigo da Rosa Righi, is a Computer Science professor and researcher", avatar: "/images/team/righi.png" },
+      {
+        name: "Bernardo Micol Righi", role: "Engenheiro de Software", quote: "Revenge only brings pain and suffering. Even if you succeed, all that's left is emptiness.", avatar: "/images/team/righi.png" },
     ] satisfies TeamMember[],
     cta: { label: "Trabalhe conosco", href: "/#contato" },
   },
