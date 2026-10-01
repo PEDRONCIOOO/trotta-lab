@@ -3,15 +3,18 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Button } from "@/ui/components";
-import { cookieBanner } from "@/app/resources";
 import { CONSENT_EVENT, type ConsentValue, getConsent, setConsent } from "@/lib/consent";
 import styles from "./CookieConsent.module.scss";
 
-/**
- * Banner de consentimento. Aparece só quando não há escolha gravada;
- * a escolha persiste em cookie first-party por `consent.maxAgeDays` (config.ts).
- */
-export function CookieConsent() {
+type BannerContent = {
+  title: string;
+  text: string;
+  accept: string;
+  reject: string;
+  more: { label: string; href: string };
+};
+
+export function CookieConsent({ banner }: { banner: BannerContent }) {
   const [choice, setChoice] = useState<ConsentValue | null | undefined>(undefined);
 
   useEffect(() => {
@@ -21,7 +24,6 @@ export function CookieConsent() {
     return () => window.removeEventListener(CONSENT_EVENT, onChange);
   }, []);
 
-  // undefined = ainda não leu o cookie (evita flash no SSR); string = já decidiu
   if (choice !== null) return null;
 
   const decide = (v: ConsentValue) => {
@@ -30,22 +32,22 @@ export function CookieConsent() {
   };
 
   return (
-    <div className={`${styles.banner} cut`} role="dialog" aria-live="polite" aria-label={cookieBanner.title}>
+    <div className={`${styles.banner} cut`} role="dialog" aria-live="polite" aria-label={banner.title}>
       <div className={styles.text}>
-        <b>{cookieBanner.title}</b>
+        <b>{banner.title}</b>
         <p>
-          {cookieBanner.text}{" "}
-          <Link className="link-underline" href={cookieBanner.more.href}>
-            {cookieBanner.more.label}
+          {banner.text}{" "}
+          <Link className="link-underline" href={banner.more.href}>
+            {banner.more.label}
           </Link>
         </p>
       </div>
       <div className={styles.actions}>
         <Button size="s" variant="secondary" onClick={() => decide("rejected")}>
-          {cookieBanner.reject}
+          {banner.reject}
         </Button>
         <Button size="s" onClick={() => decide("accepted")}>
-          {cookieBanner.accept}
+          {banner.accept}
         </Button>
       </div>
     </div>

@@ -1,9 +1,17 @@
 import classNames from "classnames";
 import { Reveal, Section, SectionHead } from "@/ui/components";
-import { offers } from "@/app/resources";
+import type { Offer } from "@/app/resources/content";
 import styles from "./Offers.module.scss";
 
-export function Offers() {
+type OffersProps = {
+  offers: {
+    title: string;
+    description: string;
+    items: Offer[];
+  };
+};
+
+export function Offers({ offers }: OffersProps) {
   return (
     <Section id="ofertas" flushTop>
       <SectionHead title={offers.title} description={offers.description} />

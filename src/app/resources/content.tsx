@@ -472,11 +472,12 @@ const aboutPage = {
       { name: "Lucas Konkiewitz", role: "Engenheiro de Software", quote: "Cada peça só vem quando é necessário.", avatar: "/images/team/lucasmauricio.png" },
       { name: "Gildácio Lopes", role: "Engenheiro de Software", quote: "8 horas é meio período.", avatar: "/images/team/gildacio.png" },
       { name: "Raphael Titan", role: "Game Developer", quote: "I'm a game dev by the day", avatar: "/images/team/titan.png" },
-      { name: "Lucas Forte", role: "Criativo de Marketing", quote: "Brilhando os olhos das melhores empresas do país!", avatar: "/images/team/lucasforte.png" },
+      { name: "Lucas Forte", role: "Marketing", quote: "Brilhando os olhos das melhores empresas do país!", avatar: "/images/team/lucasforte.png" },
       { name: "Vitoria Petek", role: "3D/VFX/UI Artista", quote: "Trabalhando...", avatar: "/images/team/vitoriapetek.png" },
       { name: "Douglas Dias", role: "Engenheiro de Software", quote: "Que nosso trabalho atinja milhões.", avatar: "/images/team/douglasdias.png" },
-      {
-        name: "Bernardo Micol Righi", role: "Engenheiro de Software", quote: "Revenge only brings pain and suffering. Even if you succeed, all that's left is emptiness.", avatar: "/images/team/righi.png" },
+      {name: "Bernardo Micol Righi", role: "Engenheiro de Software", quote: "Revenge only brings pain and suffering. Even if you succeed, all that's left is emptiness.", avatar: "/images/team/righi.png" },
+      {name: "Cleverton Jaber", role: "Engenheiro de Software", quote: "Softwares reais para mudanças reais.", avatar: "/images/team/cleverton.jpg" },
+      { name: "Marco Galdino Dias", role: "Engenheiro de Software", quote: "O simples bem feito vale mais que mil linhas de código...", avatar: "/images/team/mago.jpg" },
     ] satisfies TeamMember[],
     cta: { label: "Trabalhe conosco", href: "/#contato" },
   },
@@ -508,6 +509,7 @@ export type LegalSection = { title: string; paragraphs?: string[]; bullets?: str
 export type LegalDoc = { meta: { title: string; description: string }; title: string; updated: string; intro: string; sections: LegalSection[] };
 
 const legal = {
+  lastUpdatedLabel: "Última atualização",
   controller: {
     name: "Trotta [Razão Social Ltda.]",
     cnpj: "[53.198.666/0001-62]",

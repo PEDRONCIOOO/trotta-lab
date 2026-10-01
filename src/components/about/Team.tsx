@@ -1,9 +1,17 @@
 import { Button, Reveal, Section, SectionHead } from "@/ui/components";
-import { aboutPage } from "@/app/resources";
+import type { TeamMember } from "@/app/resources/content";
 import styles from "./Team.module.scss";
 
-export function Team() {
-  const t = aboutPage.team;
+type Props = {
+  team: {
+    title: string;
+    description: string;
+    members: TeamMember[];
+    cta: { label: string; href: string };
+  };
+};
+
+export function Team({ team: t }: Props) {
   if (!t.members.length) return null;
   return (
     <Section id="time" tone="dark-soft">
@@ -25,7 +33,7 @@ export function Team() {
             </div>
             <h3>{m.name}</h3>
             <span className={styles.role}>{m.role}</span>
-            {m.quote && <p>“{m.quote}”</p>}
+            {m.quote && <p>&ldquo;{m.quote}&rdquo;</p>}
           </Reveal>
         ))}
       </div>

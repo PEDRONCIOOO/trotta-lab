@@ -1,13 +1,14 @@
 "use client";
 
-import { cookieBanner } from "@/app/resources";
 import { clearConsent } from "@/lib/consent";
+import type { Locale } from "@/lib/i18n";
 
-/** Botão do rodapé: apaga a escolha e reabre o banner. */
-export function ManageCookies({ className }: { className?: string }) {
+/** Footer button: clears cookie consent to reopen the banner. */
+export function ManageCookies({ className, locale }: { className?: string; locale: Locale }) {
+  const label = locale === "en" ? "Cookie preferences" : "Preferências de cookies";
   return (
     <button type="button" className={className} onClick={clearConsent}>
-      {cookieBanner.manage}
+      {label}
     </button>
   );
 }

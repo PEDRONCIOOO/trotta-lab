@@ -1,10 +1,27 @@
 import { Chip, Container, Eyebrow } from "@/ui/components";
-import { display, footer, social } from "@/app/resources";
 import type { FooterLink } from "@/app/resources/content";
+import { localeHome, type Locale } from "@/lib/i18n";
 import { ManageCookies } from "@/components/consent";
 import styles from "./Footer.module.scss";
 
-export const Footer = () => {
+type FooterContent = {
+  newsletter: { title: string; description: string; placeholder: string };
+  columns: { title: string; links: FooterLink[] | "social" }[];
+  region: { label: string; options: string[]; active: string };
+  copyright: string;
+};
+
+type FooterProps = {
+  footer: FooterContent;
+  social: { name: string; link: string }[];
+  display: { newsletter: boolean; regionToggle: boolean };
+  locale: Locale;
+};
+
+export const Footer = ({ footer, social, display, locale }: FooterProps) => {
+  const altLocale: Locale = locale === "pt" ? "en" : "pt";
+  const altPath = localeHome(altLocale);
+
   return (
     <footer className={`${styles.footer} cave on-dark`}>
       <Container>
@@ -15,7 +32,7 @@ export const Footer = () => {
               <p>{footer.newsletter.description}</p>
               <form>
                 <input type="email" placeholder={footer.newsletter.placeholder} aria-label="E-mail" />
-                <button type="submit" aria-label="Assinar">→</button>
+                <button type="submit" aria-label={locale === "en" ? "Subscribe" : "Assinar"}>→</button>
               </form>
             </div>
           )}
@@ -34,7 +51,7 @@ export const Footer = () => {
                   ))}
                   {col.title === "Legal" && (
                     <li>
-                      <ManageCookies className={`${styles.linkBtn} link-underline`} />
+                      <ManageCookies className={`${styles.linkBtn} link-underline`} locale={locale} />
                     </li>
                   )}
                 </ul>
@@ -47,9 +64,13 @@ export const Footer = () => {
           <div className={styles.region}>
             <Eyebrow className={styles.regionLabel}>{footer.region.label}</Eyebrow>
             <div className={styles.toggle}>
-              {footer.region.options.map((o) => (
-                <span key={o} className={o === footer.region.active ? styles.active : undefined}>{o}</span>
-              ))}
+              {footer.region.options.map((o) =>
+                o === footer.region.active ? (
+                  <span key={o} className={styles.active}>{o}</span>
+                ) : (
+                  <a key={o} href={altPath} className="link-underline">{o}</a>
+                ),
+              )}
             </div>
           </div>
         )}

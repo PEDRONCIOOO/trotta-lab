@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp src/app/servicos/servicos.module.scss \"src/app/[locale]/servicos/\")",
+      "Bash(cp src/app/obrigado/obrigado.module.scss \"src/app/[locale]/obrigado/\")",
+      "Bash(rm -f src/app/page.tsx src/app/servicos/page.tsx src/app/servicos/servicos.module.scss src/app/sobre/page.tsx src/app/privacidade/page.tsx src/app/cookies/page.tsx src/app/obrigado/page.tsx src/app/obrigado/obrigado.module.scss)",
+      "Bash(rmdir src/app/servicos src/app/sobre src/app/privacidade src/app/cookies src/app/obrigado)"
+    ]
+  }
+}

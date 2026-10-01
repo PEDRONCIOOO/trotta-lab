@@ -2,10 +2,15 @@ import { Container, PageHero } from "@/ui/components";
 import type { LegalDoc } from "@/app/resources/content";
 import styles from "./LegalDocument.module.scss";
 
-export function LegalDocument({ doc }: { doc: LegalDoc }) {
+type Props = {
+  doc: LegalDoc;
+  lastUpdatedLabel?: string;
+};
+
+export function LegalDocument({ doc, lastUpdatedLabel = "Última atualização" }: Props) {
   return (
     <>
-      <PageHero title={doc.title} subtitle={`Última atualização: ${doc.updated}`} />
+      <PageHero title={doc.title} subtitle={`${lastUpdatedLabel}: ${doc.updated}`} />
       <Container className={styles.wrap}>
         <article className={styles.prose}>
           <p className={styles.intro}>{doc.intro}</p>

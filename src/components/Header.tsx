@@ -3,27 +3,43 @@
 import { useState } from "react";
 import classNames from "classnames";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Button, Chip, Container } from "@/ui/components";
-import { display, nav, brand } from "@/app/resources";
+import { alternatePath, type Locale } from "@/lib/i18n";
 import { Logo } from "@/components/Logo";
 import styles from "./Header.module.scss";
 
-export const Header = () => {
+type NavContent = {
+  topbar: { text: string; region: string; switchLabel: string; switchTo: string };
+  items: { label: string; href: string; chip?: string }[];
+  cta: { label: string; href: string };
+};
+
+type HeaderProps = {
+  nav: NavContent;
+  brand: { name: string };
+  display: { topbar: boolean };
+  locale: Locale;
+};
+
+export const Header = ({ nav, brand, display, locale }: HeaderProps) => {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const alt = alternatePath(pathname, locale);
 
   return (
     <header className={styles.header}>
       {display.topbar && (
         <div className={styles.topbar}>
           {nav.topbar.text} <b>{nav.topbar.region}</b>. {nav.topbar.switchLabel}{" "}
-          <a className="link-underline" href="#">
+          <a className="link-underline" href={alt.path}>
             {nav.topbar.switchTo}
           </a>
         </div>
       )}
       <Container>
         <nav className={styles.nav}>
-          <Link href="#top" className={styles.logo} aria-label={`${brand.name} — início`}>
+          <Link href="#top" className={styles.logo} aria-label={`${brand.name} — ${locale === "en" ? "home" : "início"}`}>
             <Logo />
             {brand.name}
           </Link>

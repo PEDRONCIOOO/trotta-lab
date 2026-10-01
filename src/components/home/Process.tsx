@@ -1,8 +1,17 @@
 import { Button, Reveal, Section, SectionHead } from "@/ui/components";
-import { process } from "@/app/resources";
+import type { Step } from "@/app/resources/content";
 import styles from "./Process.module.scss";
 
-export function Process() {
+type ProcessProps = {
+  process: {
+    title: string;
+    description: string;
+    cta: { label: string; href: string };
+    steps: Step[];
+  };
+};
+
+export function Process({ process }: ProcessProps) {
   return (
     <Section id="processo">
       <SectionHead

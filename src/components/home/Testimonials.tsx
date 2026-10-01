@@ -2,10 +2,19 @@
 
 import { useRef } from "react";
 import { Eyebrow, Reveal, Section } from "@/ui/components";
-import { testimonials } from "@/app/resources";
+import type { Testimonial } from "@/app/resources/content";
 import styles from "./Testimonials.module.scss";
 
-export function Testimonials() {
+type TestimonialsProps = {
+  testimonials: {
+    eyebrow: string;
+    featured: { quote: string; name: string; role: string };
+    items: Testimonial[];
+    disclaimer?: string;
+  };
+};
+
+export function Testimonials({ testimonials }: TestimonialsProps) {
   const rail = useRef<HTMLDivElement>(null);
   const scroll = (dir: 1 | -1) => rail.current?.scrollBy({ left: 360 * dir, behavior: "smooth" });
 
@@ -13,7 +22,7 @@ export function Testimonials() {
     <Section id="depoimentos" tone="dark-soft">
       <Eyebrow>{testimonials.eyebrow}</Eyebrow>
       <Reveal as="blockquote" className={styles.big}>
-        “{testimonials.featured.quote}”
+        &ldquo;{testimonials.featured.quote}&rdquo;
       </Reveal>
       <Reveal className={styles.author}>
         <span className={styles.avatar} />
@@ -26,7 +35,7 @@ export function Testimonials() {
         {testimonials.items.map((t) => (
           <article key={t.brand} className={`${styles.card} card cut`}>
             <div className={styles.brand}>{t.brand}</div>
-            <blockquote>“{t.quote}”</blockquote>
+            <blockquote>&ldquo;{t.quote}&rdquo;</blockquote>
             <div className={styles.author}>
               <span className={styles.avatar} />
               <div>

@@ -1,9 +1,16 @@
 import { Chip, Reveal, Section, SectionHead } from "@/ui/components";
-import { aboutPage } from "@/app/resources";
+import type { CommunityEvent } from "@/app/resources/content";
 import styles from "./Community.module.scss";
 
-export function Community() {
-  const c = aboutPage.community;
+type Props = {
+  community: {
+    title: string;
+    description: string;
+    events: CommunityEvent[];
+  };
+};
+
+export function Community({ community: c }: Props) {
   if (!c.events.length) return null;
   return (
     <Section id="comunidade" tone="cave" peak>

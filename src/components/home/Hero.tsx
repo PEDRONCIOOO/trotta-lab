@@ -1,10 +1,19 @@
 import { Button, Container, Peak } from "@/ui/components";
-import { display, hero } from "@/app/resources";
 import { HeroArt } from "./HeroArt";
 import { HeroSceneLoader } from "./scene/HeroSceneLoader";
 import styles from "./Hero.module.scss";
 
-export function Hero() {
+type HeroProps = {
+  hero: {
+    eyebrow: string;
+    headline: string;
+    cta: { label: string; href: string };
+    stats: { value: string; label: string }[];
+  };
+  display: { hero3d: boolean };
+};
+
+export function Hero({ hero, display }: HeroProps) {
   return (
     <section className={`${styles.hero} on-dark cave`} id="top">
       <div className={styles.beam} aria-hidden="true" />

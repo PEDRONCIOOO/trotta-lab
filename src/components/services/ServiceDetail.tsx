@@ -1,11 +1,14 @@
 import { Reveal } from "@/ui/components";
-import { servicesPage } from "@/app/resources";
 import type { ServiceDetail as ServiceDetailType } from "@/app/resources/content";
 import { ServiceIllustration } from "./ServiceIllustration";
 import styles from "./ServiceDetail.module.scss";
 
-/** Bloco de serviço expandido: ilustração + título, tagline, descrição e listas */
-export function ServiceDetail({ item }: { item: ServiceDetailType }) {
+type Props = {
+  item: ServiceDetailType;
+  labels: { included: string; ideal: string };
+};
+
+export function ServiceDetail({ item, labels }: Props) {
   return (
     <Reveal as="article" className={`${styles.card} card cut-lg`}>
       <div className={styles.art} aria-hidden="true">
@@ -16,10 +19,10 @@ export function ServiceDetail({ item }: { item: ServiceDetailType }) {
         <p className={styles.tagline}>{item.tagline}</p>
         <p className={styles.description}>{item.description}</p>
 
-        <h3 className={styles.label}>{servicesPage.labels.included}</h3>
+        <h3 className={styles.label}>{labels.included}</h3>
         <ul className={styles.list}>{item.included.map((t) => <li key={t}>{t}</li>)}</ul>
 
-        <h3 className={styles.label}>{servicesPage.labels.ideal}</h3>
+        <h3 className={styles.label}>{labels.ideal}</h3>
         <ul className={styles.list}>{item.idealFor.map((t) => <li key={t}>{t}</li>)}</ul>
       </div>
     </Reveal>

@@ -1,8 +1,17 @@
+import type { ReactNode } from "react";
 import { Eyebrow, Reveal, Section } from "@/ui/components";
-import { lab } from "@/app/resources";
 import styles from "./Lab.module.scss";
 
-export function Lab() {
+type LabProps = {
+  lab: {
+    eyebrow: string;
+    title: ReactNode;
+    manifesto: ReactNode[];
+    ways: { num: string; title: string; description: string }[];
+  };
+};
+
+export function Lab({ lab }: LabProps) {
   return (
     <Section id="lab" tone="cave" peak>
       <Reveal className={styles.manifesto}>

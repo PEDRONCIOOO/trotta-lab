@@ -1,8 +1,17 @@
 import { Button, Chip, Reveal, Section, SectionHead } from "@/ui/components";
-import { projects } from "@/app/resources";
+import type { Project } from "@/app/resources/content";
 import styles from "./Projects.module.scss";
 
-export function Projects() {
+type ProjectsProps = {
+  projects: {
+    title: string;
+    description: string;
+    cta: { label: string; href: string };
+    items: Project[];
+  };
+};
+
+export function Projects({ projects }: ProjectsProps) {
   return (
     <Section id="projetos" flushTop>
       <SectionHead

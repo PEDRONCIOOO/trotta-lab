@@ -4,17 +4,34 @@ import classNames from "classnames";
 import { useRouter } from "next/navigation";
 import { type FormEvent, useState } from "react";
 import { Button, Eyebrow, Reveal, Section } from "@/ui/components";
-import { contact, contactSection as c } from "@/app/resources";
+import { localePath, type Locale } from "@/lib/i18n";
 import styles from "./Contact.module.scss";
 
 interface ContactProps {
+  content: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    altPrefix: string;
+    fields: Record<string, string>;
+    stages: string[];
+    needs: string[];
+    budgets: string[];
+    submit: string;
+    status: { sending: string; success: string; error: string; rateLimited: string };
+    fine: string;
+  };
+  contact: { email: string; endpoint: string };
+  locale: Locale;
   title?: string;
   lead?: string;
 }
 
 type Status = "idle" | "sending" | "success" | "error" | "rateLimited";
 
-export function Contact({ title = c.title, lead = c.lead }: ContactProps = {}) {
+export function Contact({ content: c, contact, locale, title, lead }: ContactProps) {
+  const displayTitle = title ?? c.title;
+  const displayLead = lead ?? c.lead;
   const [status, setStatus] = useState<Status>("idle");
   const router = useRouter();
 
@@ -33,7 +50,7 @@ export function Contact({ title = c.title, lead = c.lead }: ContactProps = {}) {
       if (res.ok) {
         setStatus("success");
         form.reset();
-        router.push(contact.thankYouPath); // página de confirmação (conversão)
+        router.push(localePath("obrigado", locale));
       } else {
         setStatus(res.status === 429 ? "rateLimited" : "error");
       }
@@ -54,8 +71,8 @@ export function Contact({ title = c.title, lead = c.lead }: ContactProps = {}) {
       <div className={styles.grid}>
         <Reveal>
           <Eyebrow>{c.eyebrow}</Eyebrow>
-          <h2 className={styles.title}>{title}</h2>
-          <p className={styles.lead}>{lead}</p>
+          <h2 className={styles.title}>{displayTitle}</h2>
+          <p className={styles.lead}>{displayLead}</p>
           <p className={styles.alt}>
             {c.altPrefix}{" "}
             <a className="link-underline" href={`mailto:${contact.email}`}>{contact.email}</a>
@@ -64,7 +81,6 @@ export function Contact({ title = c.title, lead = c.lead }: ContactProps = {}) {
 
         <Reveal>
           <form onSubmit={onSubmit} className={styles.form} noValidate={false}>
-            {/* honeypot anti-spam: invisível para pessoas, bots costumam preencher */}
             <div className={styles.hp} aria-hidden="true">
               <label htmlFor="website">Website</label>
               <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />

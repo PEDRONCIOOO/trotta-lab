@@ -1,9 +1,15 @@
 import { Reveal, Section, SectionHead } from "@/ui/components";
-import { aboutPage } from "@/app/resources";
 import styles from "./Mission.module.scss";
 
-export function Mission() {
-  const m = aboutPage.mission;
+type Props = {
+  mission: {
+    title: string;
+    text: string;
+    values: { title: string; text: string }[];
+  };
+};
+
+export function Mission({ mission: m }: Props) {
   return (
     <Section id="missao">
       <SectionHead title={m.title} description={m.text} />

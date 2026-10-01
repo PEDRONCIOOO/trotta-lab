@@ -1,8 +1,16 @@
+import type { ReactNode } from "react";
 import { Eyebrow, Reveal, Section } from "@/ui/components";
-import { about } from "@/app/resources";
 import styles from "./About.module.scss";
 
-export function About() {
+type AboutProps = {
+  about: {
+    eyebrow: string;
+    title: ReactNode;
+    paragraphs: ReactNode[];
+  };
+};
+
+export function About({ about }: AboutProps) {
   return (
     <Section id="sobre">
       <Reveal className={styles.grid}>

@@ -1,9 +1,19 @@
 import { Button, Reveal, Section, SectionHead } from "@/ui/components";
-import { aboutPage } from "@/app/resources";
 import styles from "./Impact.module.scss";
 
-export function Impact() {
-  const im = aboutPage.impact;
+type Props = {
+  impact: {
+    title: string;
+    description: string;
+    cta: { label: string; href: string };
+    missionTitle: string;
+    mission: string[];
+    highlightsTitle: string;
+    highlights: { value: string; label: string }[];
+  };
+};
+
+export function Impact({ impact: im }: Props) {
   return (
     <Section id="impacto">
       <SectionHead

@@ -1,10 +1,12 @@
 import { Container, Eyebrow } from "@/ui/components";
-import { sectors } from "@/app/resources";
 import styles from "./Sectors.module.scss";
 
-/** Marquee de setores (equivale à faixa "Trusted by" da referência) */
-export function Sectors() {
-  const items = [...sectors.items, ...sectors.items]; // duplicado para loop contínuo
+type SectorsProps = {
+  sectors: { eyebrow: string; items: string[] };
+};
+
+export function Sectors({ sectors }: SectorsProps) {
+  const items = [...sectors.items, ...sectors.items];
   return (
     <Container className={styles.wrap}>
       <Eyebrow>{sectors.eyebrow}</Eyebrow>

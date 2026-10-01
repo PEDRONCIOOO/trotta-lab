@@ -1,10 +1,18 @@
 import { Button, Reveal, Section, SectionHead } from "@/ui/components";
-import { aboutPage } from "@/app/resources";
+import type { Milestone } from "@/app/resources/content";
 import styles from "./Journey.module.scss";
 
-/** Linha do tempo horizontal (desktop) / vertical (mobile) — modelo "Our journey" */
-export function Journey() {
-  const j = aboutPage.journey;
+type Props = {
+  journey: {
+    title: string;
+    start: string;
+    end: string;
+    milestones: Milestone[];
+    cta: { label: string; href: string };
+  };
+};
+
+export function Journey({ journey: j }: Props) {
   return (
     <Section id="jornada" flushTop>
       <SectionHead title={j.title} />

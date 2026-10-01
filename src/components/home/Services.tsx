@@ -1,9 +1,21 @@
 import { Button, Reveal, Section, SectionHead } from "@/ui/components";
-import { services } from "@/app/resources";
 import type { ServiceItem } from "@/app/resources/content";
 import styles from "./Services.module.scss";
 
-export function Services() {
+type ServicesProps = {
+  services: {
+    title: string;
+    description: string;
+    cta: { label: string; href: string };
+    detailsLabel: string;
+    includedLabel: string;
+    idealLabel: string;
+    featured: ServiceItem;
+    items: ServiceItem[];
+  };
+};
+
+export function Services({ services }: ServicesProps) {
   const f = services.featured;
   return (
     <Section id="servicos">
@@ -16,7 +28,7 @@ export function Services() {
         <Reveal as="article" className={`${styles.big} cut-lg`}>
           <h3>{f.title}</h3>
           <p>{f.summary}</p>
-          <Lists item={f} />
+          <Lists item={f} includedLabel={services.includedLabel} idealLabel={services.idealLabel} />
           <div className={styles.bigArt} aria-hidden="true">
             <ProductionLine />
           </div>
@@ -33,7 +45,7 @@ export function Services() {
                 <p>{item.summary}</p>
                 <details className={styles.details}>
                   <summary>{services.detailsLabel}</summary>
-                  <Lists item={item} />
+                  <Lists item={item} includedLabel={services.includedLabel} idealLabel={services.idealLabel} />
                 </details>
               </div>
             </Reveal>
@@ -44,15 +56,15 @@ export function Services() {
   );
 }
 
-function Lists({ item }: { item: ServiceItem }) {
+function Lists({ item, includedLabel, idealLabel }: { item: ServiceItem; includedLabel: string; idealLabel: string }) {
   return (
     <div className={styles.lists}>
       <div>
-        <h4>{services.includedLabel}</h4>
+        <h4>{includedLabel}</h4>
         <ul>{item.included.map((t) => <li key={t}>{t}</li>)}</ul>
       </div>
       <div>
-        <h4>{services.idealLabel}</h4>
+        <h4>{idealLabel}</h4>
         <ul>{item.idealFor.map((t) => <li key={t}>{t}</li>)}</ul>
       </div>
     </div>
