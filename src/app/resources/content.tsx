@@ -477,7 +477,7 @@ const aboutPage = {
       { name: "Douglas Dias", role: "Engenheiro de Software", quote: "Que nosso trabalho atinja milhões.", avatar: "/images/team/douglasdias.png" },
       {name: "Bernardo Micol Righi", role: "Engenheiro de Software", quote: "Revenge only brings pain and suffering. Even if you succeed, all that's left is emptiness.", avatar: "/images/team/righi.png" },
       {name: "Cleverton Jaber", role: "Engenheiro de Software", quote: "Softwares reais para mudanças reais.", avatar: "/images/team/cleverton.jpg" },
-      { name: "Marco Galdino Dias", role: "Engenheiro de Software", quote: "O simples bem feito vale mais que mil linhas de código...", avatar: "/images/team/mago.jpg" },
+      { name: "Marco Galdino Dias", role: "Engenheiro de Software", quote: "O simples bem feito vale mais bem mais que mil linhas de código...", avatar: "/images/team/mago.jpg" },
     ] satisfies TeamMember[],
     cta: { label: "Trabalhe conosco", href: "/#contato" },
   },
