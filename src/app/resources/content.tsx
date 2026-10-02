@@ -478,6 +478,7 @@ const aboutPage = {
       {name: "Bernardo Micol Righi", role: "Engenheiro de Software", quote: "Revenge only brings pain and suffering. Even if you succeed, all that's left is emptiness.", avatar: "/images/team/righi.png" },
       {name: "Cleverton Jaber", role: "Engenheiro de Software", quote: "Softwares reais para mudanças reais.", avatar: "/images/team/cleverton.jpg" },
       { name: "Marco Galdino Dias", role: "Engenheiro de Software", quote: "O simples bem feito vale mais bem mais que mil linhas de código...", avatar: "/images/team/mago.jpg" },
+      { name: "Fernando Rollemberg", role: "Engenheiro de Software", quote: "De Belford Roxo pro mundo, tijolo por tijolo.", avatar: "/images/team/fernando.jpg" },
     ] satisfies TeamMember[],
     showMore: "Ver mais",
     cta: { label: "Trabalhe conosco", href: "/#contato" },
