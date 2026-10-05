@@ -480,7 +480,7 @@ const aboutPage = {
       { name: "Marco Galdino Dias", role: "Engenheiro de Software", quote: "O simples bem feito vale mais bem mais que mil linhas de código...", avatar: "/images/team/mago.jpg" },
       { name: "Fernando Rollemberg", role: "Engenheiro de Software", quote: "De Belford Roxo pro mundo, tijolo por tijolo.", avatar: "/images/team/fernando.jpg" },
       { name: "Carlos Daniel Beling de Paula", role: "Engenheiro de Software", quote: "A melhor maneira de prever o futuro é inventá-lo.", avatar: "/images/team/carlosdaniel.png" },
-      { name: "Caio Landgraf", role: "Engenheiro de Software", quote: "Lidero a engenharia de soluções de software personalizadas para clientes em todo o mundo.", avatar: "/images/team/caioland.jpg" },
+      { name: "Caio Landgraf", role: "Staff Engenheiro de Software", quote: "Lidero a engenharia de soluções de software personalizadas para clientes em todo o mundo.", avatar: "/images/team/caioland.jpg" },
     ] satisfies TeamMember[],
     showMore: "Ver mais",
     cta: { label: "Trabalhe conosco", href: "/#contato" },
