@@ -468,6 +468,7 @@ const aboutPage = {
       { name: "Marco Galdino Dias", role: "Software Engineer", quote: "O simples bem feito vale mais bem mais que mil linhas de código...", avatar: "/images/team/mago.jpg" },
       { name: "Fernando Rollemberg", role: "Software Engineer", quote: "From Belford Roxo to the world, brick by brick.", avatar: "/images/team/fernando.jpg" },
       { name: "Carlos Daniel Beling de Paula", role: "Software Engineer", quote: "The best way to predict the future is inventing.", avatar: "/images/team/carlosdaniel.png" },
+      { name: "Caio Landgraf", role: "Software Engineer", quote: "I lead engineering for custom software solutions for clients worldwide", avatar: "/images/team/caioland.jpg" },
     ] satisfies TeamMember[],
     showMore: "See more",
     cta: { label: "Work with us", href: "/en#contato" },
